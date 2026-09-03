@@ -10,7 +10,7 @@ description: 从记忆、空间推理和持续实验中长出来的浏览器三�
 <h2>相关记录</h2>
 <div class="archive-list">
   {% for article in collections.publishedArticles %}
-    {% if "4lite" in article.data.projectIds %}
+    {% if article.data.projectIds and "4lite" in article.data.projectIds %}
     <a class="archive-entry" href="{{ article.url }}"><span class="archive-entry__number">{{ loop.index }}</span><span><strong>{{ article.data.title }}</strong><span>{{ article.data.description }}</span></span><time datetime="{{ article.data.publishedAt | isoDate }}">{{ article.data.publishedAt | displayDate(article.data.lang) }}</time></a>
     {% endif %}
   {% endfor %}
