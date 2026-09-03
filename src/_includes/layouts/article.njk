@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+bodyClass: article-page
+---
+{% set author = authors[authorId] %}
+<header class="article-heading">
+  <div>
+    <div class="article-kicker">{{ kicker or "Field Note" }}{% if seriesOrder %} {{ seriesOrder | pad3 }}{% endif %}</div>
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="article-summary">
+    <p>{{ description }}</p>
+    <div class="article-meta">
+      <span>{{ author.name }} {{ author.nameEn }}</span>
+      <time datetime="{{ publishedAt | isoDate }}">{{ publishedAt | displayDate(lang) }}</time>
+      <span>{{ readingMinutes | readingLabel }}</span>
+      {% if updatedAt != publishedAt %}<span>Updated</span>{% endif %}
+    </div>
+  </div>
+</header>
+
+{% if hero %}
+<figure class="article-hero">
+  <div class="article-hero__crop">
+    <img src="{{ hero.src }}" width="{{ hero.width }}" height="{{ hero.height }}" alt="{{ hero.alt }}" loading="eager" decoding="async" fetchpriority="high" eleventy:widths="480,800,1200" sizes="(max-width: 720px) calc(100vw - 40px), 800px">
+  </div>
+  {% if hero.caption %}<figcaption>{{ hero.caption }}</figcaption>{% endif %}
+</figure>
+{% endif %}
+
+<div class="article-layout">
+  <article class="article-body">
+    {{ content | safe }}
+    <footer class="article-end">
+      <p><strong>修订记录</strong> · <time datetime="{{ updatedAt | isoDate }}">{{ updatedAt | displayDate(lang) }}</time></p>
+      {% if seriesId %}<p>本文属于“{{ (series | findById(seriesId)).title }}”系列。{% if license %}文本采用 {{ license }} 许可。{% endif %}</p>{% endif %}
+    </footer>
+  </article>
+</div>
+
+{% include "components/article-structured-data.njk" %}

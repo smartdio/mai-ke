@@ -1,0 +1,22 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.nameZh }} / {{ site.name }}
+
+> {{ site.description }}
+
+## 主要入口
+
+- 首页：{{ "/" | absoluteUrl(site.canonicalOrigin) }}
+- 文章：{{ "/articles/" | absoluteUrl(site.canonicalOrigin) }}
+- 系列：{{ "/series/" | absoluteUrl(site.canonicalOrigin) }}
+- 项目：{{ "/projects/" | absoluteUrl(site.canonicalOrigin) }}
+- 关于：{{ "/about/" | absoluteUrl(site.canonicalOrigin) }}
+- RSS：{{ "/feed.xml" | absoluteUrl(site.canonicalOrigin) }}
+- Sitemap：{{ "/sitemap.xml" | absoluteUrl(site.canonicalOrigin) }}
+
+## 已发布文章
+
+{% for article in collections.publishedArticles %}- [{{ article.data.title }}]({{ article.url | absoluteUrl(site.canonicalOrigin) }})：{{ article.data.description }}
+{% endfor %}

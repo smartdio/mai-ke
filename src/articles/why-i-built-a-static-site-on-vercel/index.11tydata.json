@@ -1,0 +1,16 @@
+{
+  "title": "为什么我在 AI 时代，用 Vercel 建了一个静态网站",
+  "description": "传统 CMS 曾经解决发布和维护的问题；到了 AI 时代，我发现简单的 HTML、Node.js 与 Vercel，已经足以支撑一个可以长期写作的个人网站。",
+  "slug": "why-i-built-a-static-site-on-vercel",
+  "lang": "zh-CN",
+  "translationKey": "why-i-built-a-static-site-on-vercel",
+  "publishedAt": "2026-09-03T09:00:00+08:00",
+  "updatedAt": "2026-09-03T09:00:00+08:00",
+  "authorId": "mai",
+  "status": "draft",
+  "featured": false,
+  "readingMinutes": 9,
+  "kicker": "Launch Note · Publishing",
+  "tags": ["AI Native", "静态网站", "Vercel", "独立写作"],
+  "license": "CC BY 4.0"
+}

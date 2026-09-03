@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>{{ site.nameZh }} / {{ site.name }}</strong>
+      <p>麥客不停，创作不止。<br><span lang="en">Never stop creating.</span></p>
+    </div>
+    <div class="site-footer__directory">
+      <nav class="site-footer__group" aria-label="站内导航">
+        <span class="site-footer__label">站内</span>
+        <a href="/">首页</a>
+        <a href="/articles/">文章</a>
+        <a href="/series/">系列</a>
+        <a href="/projects/">项目</a>
+        <a href="/about/">关于</a>
+      </nav>
+      <nav class="site-footer__group site-footer__group--media" aria-label="媒体账号">
+        <span class="site-footer__label">媒体账号</span>
+        {% for item in socialLinks %}
+          {% if item.enabled %}
+            {% if item.url %}
+              <a href="{{ item.url }}" target="_blank" rel="{% if item.identity %}me {% endif %}noopener noreferrer">{{ item.label }}</a>
+            {% else %}
+              <span class="site-footer__account">{{ item.label }}{% if item.note %}<small>{{ item.note }}</small>{% endif %}</span>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </nav>
+      <nav class="site-footer__group" aria-label="作品与项目">
+        <span class="site-footer__label">作品与项目</span>
+        {% for project in projects %}
+          {% if project.externalUrl %}<a href="{{ project.externalUrl }}" target="_blank" rel="noopener noreferrer">{{ project.title }} 在线体验</a>{% endif %}
+          {% if project.repositoryUrl %}<a href="{{ project.repositoryUrl }}" target="_blank" rel="noopener noreferrer">GitHub · {{ project.title }}</a>{% endif %}
+        {% endfor %}
+        <a href="/feed.xml">RSS</a>
+      </nav>
+    </div>
+  </div>
+</footer>

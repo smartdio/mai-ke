@@ -1,0 +1,8 @@
+[
+  { "id": "x", "label": "X · @smardio", "url": "https://x.com/smardio", "enabled": true, "identity": true },
+  { "id": "youtube", "label": "YouTube · @smedio", "url": "https://www.youtube.com/@smedio", "enabled": false, "identity": true },
+  { "id": "tiktok", "label": "TikTok · @smardio", "url": "https://www.tiktok.com/@smardio", "enabled": true, "identity": true },
+  { "id": "xiaohongshu", "label": "小红书 · 麥客不停", "url": "https://www.xiaohongshu.com/user/profile/6702de81000000001b039e14", "enabled": true, "identity": true },
+  { "id": "weibo", "label": "微博 · 麥客不停", "url": "https://weibo.com/u/1656042251", "enabled": true, "identity": true },
+  { "id": "wechat-channels", "label": "视频号 · Mo麥AI", "note": "微信内搜索", "enabled": true, "identity": true }
+]

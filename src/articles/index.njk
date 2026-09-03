@@ -1,0 +1,17 @@
+---
+layout: layouts/page.njk
+permalink: /articles/index.html
+contentType: archive
+title: 文章
+eyebrow: Long-form archive
+description: 完整记录真实项目、工作方法与人机协作过程。
+---
+<div class="archive-list">
+  {% for article in collections.publishedArticles %}
+  <a class="archive-entry" href="{{ article.url }}">
+    <span class="archive-entry__number">{{ loop.index }}</span>
+    <span><strong>{{ article.data.title }}</strong><span>{{ article.data.description }}</span></span>
+    <time datetime="{{ article.data.publishedAt | isoDate }}">{{ article.data.publishedAt | displayDate(article.data.lang) }}</time>
+  </a>
+  {% else %}<p>第一篇长文正在整理中。</p>{% endfor %}
+</div>

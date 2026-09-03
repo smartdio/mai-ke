@@ -1,0 +1,30 @@
+{
+  "name": "mai-unstoppable-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "eleventy --serve --port=4180",
+    "clean": "node scripts/clean-output.mjs",
+    "build": "npm run clean && NODE_ENV=production eleventy",
+    "article:new": "node scripts/new-article.mjs",
+    "check:content": "node scripts/validate-content.mjs",
+    "check:html": "html-validate \"_site/**/*.html\"",
+    "check:output": "node scripts/validate-output.mjs",
+    "test": "npm run check:content && npm run build && npm run check:html && npm run check:output"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-img": "7.0.0",
+    "@11ty/eleventy-plugin-rss": "3.0.0",
+    "@fontsource-variable/noto-sans-sc": "5.3.0",
+    "@fontsource-variable/noto-serif-sc": "5.3.0",
+    "@fontsource-variable/source-serif-4": "5.3.0"
+  },
+  "devDependencies": {
+    "html-validate": "11.12.0"
+  }
+}

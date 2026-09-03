@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麥客不停 — 主理人形象海报设计稿</title>
+<style>
+  @font-face {
+    font-family: "DouyinSans";
+    src: url("../../../brand/fonts/DouyinSansBold.ttf") format("truetype");
+    font-weight: 900; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-Black.otf") format("opentype");
+    font-weight: 950; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-ExtraBold.otf") format("opentype");
+    font-weight: 850; font-style: normal; font-display: swap;
+  }
+  :root {
+    --ink: #101010; --night: #101d33; --paper: #fffaf0;
+    --white: #ffffff; --line: rgba(16,16,16,0.12);
+    --muted: #5c6068; --red: #e60012; --yellow: #ffcf00;
+    --orange: #ff6a00; --cream: #fff8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "InterLocal","DouyinSans","Noto Sans CJK SC","Noto Sans SC",system-ui,sans-serif;
+    background: linear-gradient(180deg,#fff 0%,#fff9ea 38%,#fff 100%);
+    color: var(--ink); line-height: 1.6; overflow-x: hidden;
+  }
+  .doc-header {
+    background: var(--ink); color: var(--white);
+    padding: 48px 20px 40px; text-align: center;
+  }
+  .doc-header .eyebrow {
+    color: var(--yellow); font-size: 13px; font-weight: 950;
+    letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .doc-header h1 {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: clamp(28px,4.5vw,42px); font-weight: 900;
+    text-shadow: 4px 4px 0 var(--red); margin-bottom: 8px;
+  }
+  .doc-header .subtitle { font-size: 15px; opacity: 0.8; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 48px 20px; }
+
+  /* VI Reference */
+  .vi-ref {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 8px; padding: 24px; margin-bottom: 40px;
+  }
+  .vi-ref h2 {
+    font-size: 14px; font-weight: 950; color: var(--red);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .identity-features {
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 12px;
+  }
+  .identity-features .feat {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px; background: var(--white); border-radius: 6px;
+    border: 1px solid var(--line);
+  }
+  .identity-features .feat-icon {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0;
+  }
+  .identity-features .feat-text {
+    font-size: 14px; font-weight: 700; color: #262a31;
+  }
+  .identity-features .feat-text strong { color: var(--ink); }
+
+  /* Color Swatches */
+  .color-grid {
+    display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-bottom: 40px;
+  }
+  .swatch-card {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--line); box-shadow: 0 4px 20px rgba(16,16,16,0.06);
+  }
+  .swatch-card .swatch-top { height: 80px; }
+  .swatch-card .swatch-info { padding: 12px; background: var(--white); }
+  .swatch-card .swatch-name { font-size: 12px; font-weight: 950; color: var(--ink); }
+  .swatch-card .swatch-hex { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+  .swatch-card .swatch-use { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 4px; }
+
+  /* Font Table */
+  .font-table {
+    display: grid; gap: 12px; margin-bottom: 40px;
+  }
+  .font-row {
+    display: grid; grid-template-columns: 120px 1fr 1fr; gap: 16px;
+    padding: 16px; background: var(--white); border: 1px solid var(--line); border-radius: 6px;
+  }
+  .font-row .font-label {
+    font-size: 13px; font-weight: 950; color: var(--red); letter-spacing: 0.06em;
+  }
+  .font-row .font-name {
+    font-size: 24px; font-weight: 900; color: var(--ink);
+  }
+  .font-row .font-src {
+    font-size: 12px; font-weight: 600; color: var(--muted); word-break: break-all;
+  }
+  .font-sample-zh { font-family: "DouyinSans","Noto Sans CJK SC",sans-serif; font-size: 28px; font-weight: 900; }
+  .font-sample-en { font-family: "InterLocal",sans-serif; font-size: 28px; font-weight: 950; }
+
+  /* Poster Versions */
+  .section-label {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+  }
+  .section-label .num {
+    font-family: "InterLocal",sans-serif; font-size: 15px; font-weight: 950;
+    color: var(--red); border-bottom: 3px solid var(--yellow); padding-bottom: 2px;
+  }
+  .section-label h2 {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: 28px; font-weight: 900;
+  }
+
+  .poster-card {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 8px; padding: 24px; margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(16,16,16,0.06);
+  }
+  .poster-card .pc-head {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--ink);
+  }
+  .poster-card .pc-ver {
+    font-family: "InterLocal",sans-serif; font-size: 28px; font-weight: 950;
+    color: var(--red); line-height: 1;
+  }
+  .poster-card .pc-title {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: 20px; font-weight: 900;
+  }
+  .poster-card .pc-spec {
+    margin-left: auto; font-size: 13px; font-weight: 700; color: var(--muted);
+  }
+
+  .layout-diagram {
+    background: var(--cream); border-radius: 6px; padding: 16px; margin-bottom: 16px;
+  }
+  .layout-diagram .ld-label {
+    font-size: 12px; font-weight: 950; color: var(--red);
+    letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+  .layout-diagram ul { list-style: none; }
+  .layout-diagram li {
+    padding: 6px 0; font-size: 14px; font-weight: 600; color: #343941;
+  }
+  .layout-diagram li::before { content: "— "; color: var(--orange); }
+
+  .color-strategy {
+    background: var(--night); color: var(--white);
+    border-radius: 6px; padding: 16px; margin-top: 12px;
+  }
+  .color-strategy .cs-label {
+    font-size: 12px; font-weight: 950; color: var(--yellow);
+    letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+  .color-strategy ul { list-style: none; }
+  .color-strategy li {
+    padding: 4px 0; font-size: 13px; font-weight: 600; opacity: 0.9;
+  }
+
+  /* Checklist */
+  .checklist {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 8px; padding: 24px; margin-bottom: 24px;
+  }
+  .checklist h3 {
+    font-size: 16px; font-weight: 950; margin-bottom: 16px;
+  }
+  .checklist ul { list-style: none; }
+  .checklist li {
+    padding: 8px 0; font-size: 14px; font-weight: 600; color: #343941;
+    border-bottom: 1px solid var(--line);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .box {
+    display: inline-block; width: 14px; height: 14px;
+    border: 2px solid var(--ink); border-radius: 2px;
+    margin-right: 8px; vertical-align: middle;
+  }
+
+  /* Logo preview */
+  .logo-preview {
+    display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .logo-preview-item { text-align: center; }
+  .logo-preview-item img {
+    max-width: 200px; max-height: 200px; border-radius: 8px;
+  }
+  .logo-preview-item .lp-label {
+    margin-top: 8px; font-size: 12px; font-weight: 700; color: var(--muted);
+  }
+
+  .pending {
+    background: var(--night); color: var(--white);
+    border-radius: 8px; padding: 24px; margin-bottom: 24px;
+  }
+  .pending h3 { font-size: 18px; font-weight: 900; margin-bottom: 12px; }
+  .pending ul { list-style: none; }
+  .pending li {
+    padding: 8px 0; font-size: 14px; font-weight: 600; opacity: 0.9;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .pending li:last-child { border-bottom: none; }
+
+  footer {
+    border-top: 3px solid var(--ink); padding: 32px 20px;
+    text-align: center; font-size: 13px; color: var(--muted); font-weight: 600;
+  }
+  footer .color-bar {
+    display: flex; justify-content: center; gap: 0; margin-bottom: 16px;
+  }
+  footer .color-bar span { width: 40px; height: 4px; }
+
+  @media (max-width: 768px) {
+    .color-grid { grid-template-columns: repeat(2,1fr); }
+    .identity-features { grid-template-columns: 1fr; }
+    .font-row { grid-template-columns: 1fr; }
+    .logo-preview { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <p class="eyebrow">Brand Document · 03</p>
+  <h1>主理人形象海报设计稿</h1>
+  <p class="subtitle">麥客不停 · VI 应用规范 / v4.0 · 2026-06-25</p>
+</div>
+
+<div class="container">
+
+  <!-- VI Reference -->
+  <div class="vi-ref">
+    <h2>视觉规范依据</h2>
+    <p style="font-size:14px;font-weight:600;color:#343941;margin-bottom:16px">
+      来源：brand/guidelines/visual-identity.html（已复制到项目 brand/ 目录作为本项目标准）
+    </p>
+    <div class="identity-features">
+      <div class="feat">
+        <div class="feat-icon"></div>
+        <div class="feat-text"><strong>人物</strong>：米色鸭舌帽 + 黑框眼镜 + 短胡须 + 橙色上衣</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"></div>
+        <div class="feat-text"><strong>背景</strong>：红黄放射速度线（漫画冲击感）</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"></div>
+        <div class="feat-text"><strong>字标</strong>：错位色影（红阴影 + 黄填充 + 黑色描边）</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"></div>
+        <div class="feat-text"><strong>底部</strong>：三色短线（红 / 黄 / 黑）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Swatches -->
+  <div class="section-label">
+    <span class="num">COLOR</span>
+    <h2>配色系统</h2>
+  </div>
+  <div class="color-grid">
+    <div class="swatch-card">
+      <div class="swatch-top" style="background:#101010"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ink Black</div>
+        <div class="swatch-hex">#101010</div>
+        <div class="swatch-use">主标题、轮廓、字标描边</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-top" style="background:#e60012"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Action Red</div>
+        <div class="swatch-hex">#E60012</div>
+        <div class="swatch-use">强调色、CTA、eyebrow</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-top" style="background:#ffcf00"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Burst Yellow</div>
+        <div class="swatch-hex">#FFCF00</div>
+        <div class="swatch-use">字标阴影、装饰背景</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-top" style="background:#ff6a00"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Mai Orange</div>
+        <div class="swatch-hex">#FF6A00</div>
+        <div class="swatch-use">主按钮、推荐标识</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-top" style="background:#101d33"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Night Blue</div>
+        <div class="swatch-hex">#101D33</div>
+        <div class="swatch-use">深色底品牌环境</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Font System -->
+  <div class="section-label">
+    <span class="num">TYPE</span>
+    <h2>字体系统</h2>
+  </div>
+  <div class="font-table">
+    <div class="font-row">
+      <div>
+        <div class="font-label">中文字标</div>
+        <div class="font-sample-zh">麥客不停</div>
+      </div>
+      <div>
+        <div class="font-name">DouyinSans Bold</div>
+        <div class="font-src">brand/fonts/DouyinSansBold.ttf</div>
+      </div>
+      <div style="display:flex;align-items:center">
+        <span style="font-size:13px;font-weight:600;color:var(--muted)">仅用于 Logo 字标</span>
+      </div>
+    </div>
+    <div class="font-row">
+      <div>
+        <div class="font-label">英文字标</div>
+        <div class="font-sample-en">MAI UNSTOPPABLE</div>
+      </div>
+      <div>
+        <div class="font-name">Inter Black / ExtraBold</div>
+        <div class="font-src">brand/fonts/Inter-Black.otf + Inter-ExtraBold.otf</div>
+      </div>
+      <div style="display:flex;align-items:center">
+        <span style="font-size:13px;font-weight:600;color:var(--muted)">仅用于 Logo 字标</span>
+      </div>
+    </div>
+    <div class="font-row">
+      <div>
+        <div class="font-label">正文</div>
+        <div style="font-size:16px;font-weight:600">系统字体 → Noto Sans CJK SC</div>
+      </div>
+      <div>
+        <div class="font-name">System / Noto Sans</div>
+      </div>
+      <div style="display:flex;align-items:center">
+        <span style="font-size:13px;font-weight:600;color:var(--muted)">页面正文、卡片内容</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing Logo Assets -->
+  <div class="section-label">
+    <span class="num">ASSETS</span>
+    <h2>现有 Logo 资产</h2>
+  </div>
+  <div class="logo-preview">
+    <div class="logo-preview-item">
+      <img src="../../../brand/logos/avatars/mai-avatar-logo-color-circle.png" alt="彩色圆形头像">
+      <div class="lp-label">彩色圆形头像</div>
+    </div>
+    <div class="logo-preview-item">
+      <img src="../../../brand/logos/lockups/mai-lockup-bilingual-color.png" alt="中英双语锁定组合">
+      <div class="lp-label">中英双语锁定组合</div>
+    </div>
+  </div>
+
+  <!-- Poster Versions -->
+  <div class="section-label">
+    <span class="num">LAYOUTS</span>
+    <h2>设计版本规划</h2>
+  </div>
+
+  <div class="poster-card">
+    <div class="pc-head">
+      <span class="pc-ver">A</span>
+      <span class="pc-title">头像版（圆形头像）</span>
+      <span class="pc-spec">800 x 800px</span>
+    </div>
+    <div class="layout-diagram">
+      <div class="ld-label">元素</div>
+      <ul>
+        <li>直接使用 brand/logos/avatars/mai-avatar-logo-color-circle.png 作为基础</li>
+        <li>周围留白 ≥ 12%（按 VI 规范）</li>
+        <li>不添加额外装饰</li>
+      </ul>
+    </div>
+    <p style="font-size:14px;font-weight:600;color:var(--muted)">
+      <strong>用途</strong>：所有平台头像（直接使用现成资产）
+    </p>
+  </div>
+
+  <div class="poster-card">
+    <div class="pc-head">
+      <span class="pc-ver">B</span>
+      <span class="pc-title">竖版主理人海报</span>
+      <span class="pc-spec">1080 x 1920px · 9:16</span>
+    </div>
+    <div class="layout-diagram">
+      <div class="ld-label">布局（自上而下）</div>
+      <ul>
+        <li>顶部 30%：白色背景 + 品牌色 eyebrow</li>
+        <li>中部 40%：完整双语锁定组合（居中）</li>
+        <li>底部 30%：
+          <ul>
+            <li>一句话定位：「MAI = Maker + AI = 无限创作」</li>
+            <li>二维码占位</li>
+            <li>公众号/简介信息</li>
+            <li>底部三色短线（红/黄/黑）</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="color-strategy">
+      <div class="cs-label">色彩策略</div>
+      <ul>
+        <li>浅色背景为主，遵循"使用面积克制"</li>
+        <li>仅 CTA 按钮使用 Mai Orange</li>
+        <li>eyebrow 文字用 Action Red：「AI 内容创作者 · 一人公司 + AI Agent 团队」</li>
+      </ul>
+    </div>
+    <p style="font-size:14px;font-weight:600;color:var(--muted);margin-top:12px">
+      <strong>适用平台</strong>：小红书 / 抖音 / 视频号
+    </p>
+  </div>
+
+  <div class="poster-card">
+    <div class="pc-head">
+      <span class="pc-ver">C</span>
+      <span class="pc-title">横版主理人海报</span>
+      <span class="pc-spec">1920 x 1080px · 16:9</span>
+    </div>
+    <div class="layout-diagram">
+      <div class="ld-label">布局</div>
+      <ul>
+        <li>左侧 30%：圆形头像 + 速度线装饰背景</li>
+        <li>右侧 70%：eyebrow + 中文大标题（错位色影）+ 英文小标题 + 三句话定位（人的创意 × AI 的能力 / 一人公司 + AI Agent 团队 / 为客户包装媒体运营形象）+ 二维码占位 + 底部三色短线</li>
+      </ul>
+    </div>
+    <div class="color-strategy">
+      <div class="cs-label">色彩策略</div>
+      <ul>
+        <li>使用 Night Blue 深色背景</li>
+        <li>文字用白色 + 黄色强调</li>
+        <li>二维码用白色背板</li>
+      </ul>
+    </div>
+    <p style="font-size:14px;font-weight:600;color:var(--muted);margin-top:12px">
+      <strong>适用平台</strong>：公众号 / B站 头图
+    </p>
+  </div>
+
+  <div class="poster-card">
+    <div class="pc-head">
+      <span class="pc-ver">D</span>
+      <span class="pc-title">方版个人名片</span>
+      <span class="pc-spec">1080 x 1080px · 1:1</span>
+    </div>
+    <div class="layout-diagram">
+      <div class="ld-label">布局（4 区块）</div>
+      <ul>
+        <li>顶部：圆形头像（居中）</li>
+        <li>中上：品牌字「麥客不停」（错位色影）</li>
+        <li>中下：
+          <ul>
+            <li>角色身份：AI 内容创作者 · 一人公司 + AI Agent 团队</li>
+            <li>一句话：「MAI = Maker + AI = 无限创作」</li>
+            <li>二维码</li>
+          </ul>
+        </li>
+        <li>底部：三色短线 + 公众号/小红书/微博标识</li>
+      </ul>
+    </div>
+    <div class="color-strategy">
+      <div class="cs-label">色彩策略</div>
+      <ul>
+        <li>浅暖色背景（cream 渐变）</li>
+        <li>头条用 Action Red</li>
+        <li>装饰用 Burst Yellow</li>
+      </ul>
+    </div>
+    <p style="font-size:14px;font-weight:600;color:var(--muted);margin-top:12px">
+      <strong>适用平台</strong>：朋友圈 / 微信群
+    </p>
+  </div>
+
+  <!-- Checklist -->
+  <div class="section-label">
+    <span class="num">RULES</span>
+    <h2>视觉规范遵循清单</h2>
+  </div>
+  <div class="checklist">
+    <ul>
+      <li><span class="box"></span>头像标独立使用场景：仅用于头像 / 角标 / 水印</li>
+      <li><span class="box"></span>字标字体：DouyinSans Bold + Inter Black/ExtraBold</li>
+      <li><span class="box"></span>主组合优先使用中英文彩色版</li>
+      <li><span class="box"></span>周围留白 ≥ 12%</li>
+      <li><span class="box"></span>不改变主色 / 不拉伸字标 / 不拆散速度线</li>
+      <li><span class="box"></span>不使用渐变 / 发光 / 投影 / 额外速度线</li>
+      <li><span class="box"></span>文字效果仅在字标使用（错位色影），正文不使用</li>
+    </ul>
+  </div>
+
+  <div class="pending">
+      <h3>待 Master 确认</h3>
+      <ul>
+        <li>竖版海报文案：「MAI = Maker + AI = 无限创作」是否合适？</li>
+        <li>横版海报是否使用深色背景？</li>
+        <li>方版名片标题字号是否需要调整？</li>
+      </ul>
+    </div>
+
+</div>
+
+<footer>
+  <div class="color-bar">
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--ink)"></span>
+  </div>
+  <p>麥客不停 · 品牌文档 03 · 主理人形象海报设计稿 · v4.0 · 2026-06-25</p>
+</footer>
+
+</body>
+</html>

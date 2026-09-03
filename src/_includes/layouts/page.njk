@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+bodyClass: interior-page
+---
+<article class="shell prose-page">
+  <header class="page-heading">
+    {% if eyebrow %}<div class="section-label">{{ eyebrow }}</div>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if description %}<p>{{ description }}</p>{% endif %}
+  </header>
+  <div class="prose-page__body">{{ content | safe }}</div>
+</article>

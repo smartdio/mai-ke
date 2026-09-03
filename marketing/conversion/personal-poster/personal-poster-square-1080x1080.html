@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>麥客 · 简介卡片（方形版）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Inter:wght;800;900@400;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #1a1d1c; }
+
+  .poster {
+    width: 1080px;
+    height: 1080px;
+    background: linear-gradient(160deg, #101010 0%, #101d33 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: "Noto Sans SC", sans-serif;
+    color: #fffaf0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 80px;
+  }
+
+  /* 装饰光晕 */
+  .poster::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(230, 0, 18, 0.10) 0%, transparent 65%);
+    z-index: 1;
+  }
+
+  /* 内容容器 */
+  .content {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+  }
+
+  /* 顶部品牌 */
+  .brand-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  .brand-lockup {
+    width: 300px;
+    height: auto;
+  }
+  .brand-mai {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    letter-spacing: 5px;
+    color: #e60012;
+    text-transform: lowercase;
+  }
+  .brand-zh {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #fffaf0;
+  }
+
+  /* 人物区 */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* 头像 */
+  .portrait {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 250, 240, 0.08);
+    border: 3px solid #e60012;
+    margin-bottom: 24px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 30px rgba(230, 0, 18, 0.25);
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .portrait-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 250, 240, 0.4);
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.4;
+    background:
+      linear-gradient(45deg, rgba(255, 250, 240, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 250, 240, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 250, 240, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 250, 240, 0.05) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+  .portrait-placeholder .icon {
+    font-size: 40px;
+    color: rgba(230, 0, 18, 0.5);
+    margin-bottom: 8px;
+  }
+
+  /* 名字 */
+  .name {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #fffaf0;
+    margin-bottom: 8px;
+  }
+  /* 角色 */
+  .role {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #e60012;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  /* 一句话价值主张 */
+  .value-prop {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255, 250, 240, 0.85);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .value-prop .accent { color: #e60012; font-weight: 700; }
+
+  /* 服务清单 */
+  .services {
+    width: 100%;
+    background: rgba(255, 250, 240, 0.04);
+    border: 1px solid rgba(230, 0, 18, 0.18);
+    border-radius: 14px;
+    padding: 24px 30px;
+    margin-bottom: 24px;
+  }
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 20px;
+    color: #fffaf0;
+  }
+  .service-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e60012;
+    flex-shrink: 0;
+  }
+
+  /* 联系方式 */
+  .contact {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(255, 250, 240, 0.04);
+    border-radius: 14px;
+    padding: 20px 28px;
+    margin-top: auto;
+  }
+  .contact-info { flex: 1; }
+  .contact-label {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #e60012;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .contact-cta {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fffaf0;
+    margin-bottom: 4px;
+  }
+  .contact-detail {
+    font-size: 14px;
+    color: rgba(255, 250, 240, 0.6);
+  }
+  .qr-mini {
+    width: 110px;
+    height: 110px;
+    background: #fffaf0;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .qr-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .qr-mini-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    text-align: center;
+    line-height: 1.4;
+    background:
+      linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+      linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  }
+  .qr-mini-placeholder .icon {
+    font-size: 24px;
+    color: #ccc;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="content">
+
+    <!-- 顶部品牌 -->
+    <div class="brand-top">
+      <img class="brand-lockup" src="../../../../brand/logos/transparent/mai-lockup-bilingual-dark-transparent-cropped.png" alt="麥客不停 MAI UNSTOPPABLE">
+    </div>
+
+    <!-- 人物区 -->
+    <div class="hero">
+      <div class="portrait">
+        <!-- ⬇️ 替换为真实照片 -->
+        <!-- <img src="portrait.jpg" alt="麥客" /> -->
+        <div class="portrait-placeholder">
+          <div class="icon">◉</div>
+          <div>替换为照片</div>
+        </div>
+      </div>
+      <div class="name">麥客</div>
+      <div class="role">creator · opc · ai comic</div>
+      <div class="value-prop">
+        一个人 + <span class="accent">一群 AI</span> = 一家完整公司<br>
+        用漫画连载讲 <span class="accent">一人公司</span> 的真实日常
+      </div>
+    </div>
+
+    <!-- 服务清单 -->
+    <div class="services">
+      <div class="services-list">
+        <div class="service-item">
+          <div class="service-bullet"></div>
+          <div>AI 漫画创作 · 连载运营</div>
+        </div>
+        <div class="service-item">
+          <div class="service-bullet"></div>
+          <div>个人 IP 全平台搭建</div>
+        </div>
+        <div class="service-item">
+          <div class="service-bullet"></div>
+          <div>AI 内容流水线 · 自动化</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 联系方式 -->
+    <div class="contact">
+      <div class="contact-info">
+        <div class="contact-label">let's talk</div>
+        <div class="contact-cta">私信「麥客」</div>
+        <div class="contact-detail">备注来意 · 48h 必回</div>
+      </div>
+      <div class="qr-mini">
+        <!-- ⬇️ 替换为真实二维码 -->
+        <!-- <img src="qrcode.jpg" alt="QR" /> -->
+        <div class="qr-mini-placeholder">
+          <div class="icon">▣</div>
+          <div>QR</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

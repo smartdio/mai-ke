@@ -1,0 +1,16 @@
+{
+  "title": "我用 Agent 的五条经验",
+  "description": "提示词、Skills、表达方式与决策权：把 Agent 当成认知能力很强的专业同事之后，我留下的五条实践经验。",
+  "slug": "five-lessons-from-working-with-agents",
+  "lang": "zh-CN",
+  "translationKey": "five-lessons-from-working-with-agents",
+  "publishedAt": "2026-09-03T10:00:00+08:00",
+  "updatedAt": "2026-09-03T10:00:00+08:00",
+  "authorId": "mai",
+  "status": "draft",
+  "featured": false,
+  "readingMinutes": 12,
+  "kicker": "Agent Notes · Working Method",
+  "tags": ["AI Agent", "AI Native", "Skills", "人机协作"],
+  "license": "CC BY 4.0"
+}

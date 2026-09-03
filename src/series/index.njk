@@ -1,0 +1,12 @@
+---
+layout: layouts/page.njk
+permalink: /series/index.html
+title: 系列
+eyebrow: Ongoing series
+description: 围绕同一主题持续推进、可以按顺序阅读的长期记录。
+---
+<div class="directory-grid">
+  {% for item in series %}
+  <a class="directory-entry" href="{{ item.url }}"><span class="section-label">{{ item.status }}</span><strong>{{ item.title }}</strong><span>{{ item.description }}</span><span>查看系列 →</span></a>
+  {% endfor %}
+</div>

@@ -1,0 +1,17 @@
+---
+layout: layouts/page.njk
+permalink: /projects/4lite/index.html
+title: 4Lite
+eyebrow: Browser-sized world
+description: 从记忆、空间推理和持续实验中长出来的浏览器三维世界。
+---
+<p>4Lite 是 MAI Unstoppable 旗下持续开发的真实项目，也是“从记忆到校园”系列的实践现场。</p>
+<p class="project-actions"><a href="https://4lite.vercel.app" target="_blank" rel="noopener noreferrer">打开 4Lite</a> <a href="https://github.com/smartdio/4lite" target="_blank" rel="noopener noreferrer">查看 GitHub</a></p>
+<h2>相关记录</h2>
+<div class="archive-list">
+  {% for article in collections.publishedArticles %}
+    {% if "4lite" in article.data.projectIds %}
+    <a class="archive-entry" href="{{ article.url }}"><span class="archive-entry__number">{{ loop.index }}</span><span><strong>{{ article.data.title }}</strong><span>{{ article.data.description }}</span></span><time datetime="{{ article.data.publishedAt | isoDate }}">{{ article.data.publishedAt | displayDate(article.data.lang) }}</time></a>
+    {% endif %}
+  {% endfor %}
+</div>

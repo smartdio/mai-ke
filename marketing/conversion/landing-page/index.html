@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麥客不停 · 一人公司的 AI 创作日常</title>
+<style>
+  :root {
+    --bg: #101010;
+    --fg: #fffaf0;
+    --accent: #e60012;
+    --muted: rgba(255, 250, 240, 0.6);
+    --border: rgba(255, 250, 240, 0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .brand-lockup {
+    display: block;
+    width: min(460px, 85%);
+    height: auto;
+    margin: 0 auto 24px;
+  }
+  .brand {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .tagline {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  section {
+    margin-bottom: 80px;
+  }
+  h2 {
+    font-size: 32px;
+    margin-bottom: 32px;
+    color: var(--accent);
+  }
+  .card {
+    background: rgba(255, 250, 240, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .card h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .card p {
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .card li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .card li:last-child {
+    border-bottom: none;
+  }
+  .cta {
+    text-align: center;
+    padding: 60px 0;
+  }
+  .cta h2 {
+    margin-bottom: 24px;
+  }
+  .cta p {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .qr-placeholder {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 24px;
+    background: var(--fg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    font-size: 14px;
+  }
+  .qr-label {
+    font-size: 16px;
+    color: var(--muted);
+  }
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .container { padding: 40px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <img class="brand-lockup" src="../../../../brand/logos/transparent/mai-lockup-bilingual-dark-transparent-cropped.png" alt="麥客不停 MAI UNSTOPPABLE">
+    <p class="tagline">一人公司 + 一群 AI 的真实日常</p>
+  </header>
+
+  <section>
+    <h2>what i do</h2>
+    <div class="card">
+      <h3>AI 漫画创作与连载</h3>
+      <p>用 AI 工具链（DashScope / Stable Diffusion / ComfyUI）实现漫画从脚本到成品的全流程自动化。每周一集连载中。</p>
+    </div>
+    <div class="card">
+      <h3>个人 IP 平台化建设</h3>
+      <p>帮助律师、设计师、讲师、KOL 等专业人士建立跨平台内容矩阵，从定位到发布一站式服务。</p>
+    </div>
+    <div class="card">
+      <h3>AI 内容工作流自动化</h3>
+      <p>设计并实施 AI Agent 驱动的内容生产流水线，让一人团队也能高效输出高质量内容。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>recent work</h2>
+    <div class="card">
+      <ul>
+        <li><strong>麥客不停 · 漫画连载</strong> — 已更新 5 集，记录一人公司的真实运营</li>
+        <li><strong>AI 漫画工作流文档</strong> — 从脚本到成品的完整 SOP</li>
+        <li><strong>平台文案模板库</strong> — 11 个平台的统一话术体系</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>let's talk</h2>
+    <p>想用 AI 帮你做内容创作？<br>私信「麥客」，备注来意，48 小时内回复</p>
+    <div class="qr-placeholder">
+      [QR Code 占位]<br>
+      替换为微信/企微二维码
+    </div>
+    <div class="qr-label">扫码关注 · 查看更多</div>
+  </section>
+
+  <footer>
+    <p>© 2026 麥客不停办公室 · mai always on</p>
+  </footer>
+</div>
+</body>
+</html>

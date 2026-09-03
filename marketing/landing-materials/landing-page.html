@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麥客不停 — AI 内容创作者 · MAI = Maker + AI = 无限创作</title>
+
+<!-- Brand Fonts (from brand/fonts/) -->
+<style>
+  @font-face {
+    font-family: "DouyinSans";
+    src: url("../../../brand/fonts/DouyinSansBold.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-Black.otf") format("opentype");
+    font-weight: 950;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-ExtraBold.otf") format("opentype");
+    font-weight: 850;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Brand Variables — from visual-identity.html */
+  :root {
+    --ink: #101010;
+    --night: #101d33;
+    --paper: #fffaf0;
+    --white: #ffffff;
+    --line: rgba(16, 16, 16, 0.12);
+    --muted: #5c6068;
+    --red: #e60012;
+    --yellow: #ffcf00;
+    --orange: #ff6a00;
+    --cream: #fff8e8;
+    --shadow: 0 24px 70px rgba(16, 16, 16, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "InterLocal", "DouyinSans", "Noto Sans CJK SC", "Noto Sans SC", system-ui, sans-serif;
+    background: linear-gradient(180deg, #ffffff 0%, #fff9ea 38%, #ffffff 100%);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Hero — Brand Identity */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 460px;
+    gap: 48px;
+    align-items: center;
+    padding: 52px 20px 36px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-family: "DouyinSans", "Noto Sans CJK SC", sans-serif;
+    font-size: clamp(64px, 9vw, 132px);
+    line-height: 0.93;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-shadow: 7px 7px 0 var(--yellow), -4px -4px 0 rgba(230, 0, 18, 0.88);
+    -webkit-text-stroke: 1.4px currentColor;
+    paint-order: stroke fill;
+    margin-bottom: 28px;
+  }
+
+  .hero-copy {
+    max-width: 680px;
+    color: #262a31;
+    font-size: 20px;
+    line-height: 1.75;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 950;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.45);
+  }
+
+  .hero-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 460px;
+  }
+  .hero-mark::before {
+    content: "";
+    position: absolute;
+    inset: 24px;
+    border: 4px solid var(--ink);
+    border-radius: 50%;
+    background:
+      repeating-conic-gradient(from -14deg, rgba(230, 0, 18, 0.16) 0 10deg, rgba(255, 207, 0, 0.2) 10deg 18deg, transparent 18deg 28deg);
+  }
+  .hero-mark img {
+    position: relative;
+    width: min(410px, 82vw);
+    filter: drop-shadow(0 22px 28px rgba(16, 16, 16, 0.18));
+  }
+
+  /* Sections */
+  .section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 72px 20px;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 42px;
+    align-items: start;
+    margin-bottom: 30px;
+  }
+
+  .section-kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: "DouyinSans", "Noto Sans CJK SC", sans-serif;
+    font-size: clamp(34px, 4vw, 58px);
+    line-height: 1.05;
+    font-weight: 900;
+    margin-bottom: 18px;
+  }
+
+  .lead {
+    max-width: 780px;
+    color: #343941;
+    font-size: 18px;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+
+  /* Services Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    min-height: 100%;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); }
+
+  .card h3 {
+    margin-bottom: 12px;
+    font-size: 19px;
+    font-weight: 950;
+  }
+
+  .card p {
+    color: #434852;
+    font-size: 15px;
+    line-height: 1.72;
+    font-weight: 500;
+  }
+
+  .card .icon {
+    display: inline-block;
+    font-family: "InterLocal", "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    border-bottom: 3px solid var(--yellow);
+    padding-bottom: 2px;
+    margin-bottom: 14px;
+  }
+
+  /* Works Strip */
+  .works-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+
+  .work-card {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 207, 0, 0.18), rgba(230, 0, 18, 0.08)), var(--white);
+    text-align: center;
+  }
+
+  .work-card .badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 950;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .work-card h3 {
+    font-family: "DouyinSans", "Noto Sans CJK SC", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .work-card p {
+    color: #434852;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Pricing */
+  .pricing .grid {
+    align-items: stretch;
+  }
+
+  .price-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .price-card.featured {
+    border: 3px solid var(--orange);
+    transform: scale(1.05);
+  }
+  .price-card.featured::before {
+    content: "推荐";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0.05em;
+  }
+
+  .price-card .level {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .price-card .name {
+    font-family: "DouyinSans", "Noto Sans CJK SC", sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .price-card .desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .price-card .deliverables {
+    list-style: none;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+  .price-card .deliverables li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .price-card .deliverables li::before {
+    content: "— ";
+    color: var(--orange);
+    font-weight: 950;
+  }
+
+  .price-card .cta {
+    display: block;
+    text-align: center;
+    background: var(--ink);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 950;
+    transition: background 0.2s;
+  }
+  .price-card .cta:hover { background: var(--orange); }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--ink) 0%, var(--night) 100%);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    opacity: 0.95;
+  }
+
+  .qr-placeholder {
+    background: var(--white);
+    color: var(--ink);
+    display: inline-block;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .qr-placeholder .qr-box {
+    width: 200px;
+    height: 200px;
+    background:
+      linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+      linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    border: 2px dashed var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .qr-placeholder .qr-caption {
+    font-size: 14px;
+    font-weight: 950;
+    color: var(--ink);
+  }
+
+  /* Footer */
+  footer {
+    padding: 42px 20px 54px;
+    border-top: 3px solid var(--ink);
+    color: #363b43;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 34px;
+    }
+    .hero-mark {
+      min-height: 320px;
+      order: -1;
+    }
+    .hero-mark img { width: min(310px, 78vw); }
+    h1 { font-size: clamp(50px, 15vw, 64px); }
+    h2 { font-size: clamp(28px, 8vw, 36px); }
+    .hero-copy { font-size: 18px; }
+    .lead { font-size: 16px; }
+    .section-head { grid-template-columns: 1fr; }
+    .grid, .works-strip { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">AI Content Creator · Human Creativity × AI Power</p>
+    <h1>麥客不停</h1>
+    <p class="hero-copy">
+      MAI = Maker + AI = 无限创作。<br>
+      一人公司 + AI Agent 团队 = 一个很强的创作团队。<br>
+      AI 漫画 / AI 视频 / AI 设计 / AI 文案 — 用 AI 创作能力，为你包装媒体运营形象。往下看
+    </p>
+    <a href="#contact" class="hero-cta">了解合作 →</a>
+  </div>
+  <div class="hero-mark" aria-label="麥客不停头像 Logo">
+    <img src="../../../brand/logos/avatars/mai-avatar-logo-color.png" alt="麥客不停头像 Logo">
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="section-kicker">01 / What I Do</p>
+    <div>
+      <h2>我能做什么</h2>
+      <p class="lead">MAI = Maker + AI = 无限创作。一人公司 + AI Agent 团队，AI 漫画、AI 视频、AI 设计、AI 文案全流程都能做。</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">01</div>
+      <h3>AI 漫画创作</h3>
+      <p>从故事到分镜到画面，全流程 AI 制作。连载漫画《麥客不停》已发布 5 集。</p>
+    </div>
+    <div class="card">
+      <div class="icon">02</div>
+      <h3>AI 内容笔记 / 写作</h3>
+      <p>Unstoppable Notes 实战笔记，记录 AI 工具的真实用法。</p>
+    </div>
+    <div class="card">
+      <div class="icon">03</div>
+      <h3>AI 视频制作</h3>
+      <p>口播视频 / 拆解视频 / 短片，从脚本到剪辑到字幕全自动化。</p>
+    </div>
+    <div class="card">
+      <div class="icon">04</div>
+      <h3>AI 创意 × 设计</h3>
+      <p>把创意变成可交付的视觉作品：海报、Logo、品牌物料、AI 辅助设计。</p>
+    </div>
+    <div class="card">
+      <div class="icon">05</div>
+      <h3>AI Agent 应用</h3>
+      <p>C3PO 协调 / TARS 开发 / EVA 创意 / K2SO 运营 — 一人公司 + AI Agent 团队。</p>
+    </div>
+    <div class="card">
+      <div class="icon">06</div>
+      <h3>行业经验 × 创作能力</h3>
+      <p>法律 / 设计 / 教育 / 艺术 / 企业服务行业的实际经验，用 AI 创作能力为你的业务包装媒体运营形象。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="section-kicker">02 / Works</p>
+    <div>
+      <h2>我的作品</h2>
+      <p class="lead">漫画连载 + 实战笔记 + 视频系列 + 企业品牌作品，完整的能力展示。</p>
+    </div>
+  </div>
+  <div class="works-strip">
+    <div class="work-card">
+      <span class="badge">MANGA</span>
+      <h3>《麥客不停》</h3>
+      <p>用 AI 把创意变成作品的实践记录</p>
+    </div>
+    <div class="work-card">
+      <span class="badge">NOTES</span>
+      <h3>Unstoppable Notes</h3>
+      <p>AI 工具实战 / Agent 开发 / 创作心得</p>
+    </div>
+    <div class="work-card">
+      <span class="badge">VIDEO</span>
+      <h3>AI 视频拆解</h3>
+      <p>从口播到剪辑，AI 工具的实战演示</p>
+    </div>
+    <div class="work-card">
+      <span class="badge">BRAND</span>
+      <h3>星界智联</h3>
+      <p>AIGC 全场景应用 / 智能体商业落地 / 企业培训</p>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing">
+  <div class="section-head">
+    <p class="section-kicker">03 / Services</p>
+    <div>
+      <h2>服务合作</h2>
+      <p class="lead">从个人 IP 到企业转型，三个层级的服务包，覆盖不同行业和需求。</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="price-card">
+      <div class="level">Tier 1</div>
+      <div class="name">轻量包</div>
+      <div class="desc">个人 IP · 快速启动内容创作</div>
+      <ul class="deliverables">
+        <li>定位 + 风格设计</li>
+        <li>月度内容（漫画/视频/文案）</li>
+        <li>1 平台发布 + 数据反馈</li>
+        <li>月度复盘会议</li>
+      </ul>
+      <a href="#contact" class="cta">咨询详情</a>
+    </div>
+    <div class="price-card featured">
+      <div class="level">Tier 2 · 推荐</div>
+      <div class="name">标准包</div>
+      <div class="desc">中小企业 · 全流程内容创作 + 行业定制</div>
+      <ul class="deliverables">
+        <li>品牌定位 + 内容策略</li>
+        <li>全流程创作体系搭建</li>
+        <li>周度内容产出 + 发布</li>
+        <li>运营数据监控 + 月度报告</li>
+        <li>季度策略调整</li>
+      </ul>
+      <a href="#contact" class="cta">咨询详情</a>
+    </div>
+    <div class="price-card">
+      <div class="level">Tier 3</div>
+      <div class="name">深度陪跑</div>
+      <div class="desc">企业转型 · 咨询 + 培训 + 全流程</div>
+      <ul class="deliverables">
+        <li>深度商业诊断</li>
+        <li>全流程创作体系 + 内部团队搭建</li>
+        <li>内部团队培训（AI 内容创作）</li>
+        <li>持续陪跑（季度复盘）</li>
+        <li>战略顾问身份</li>
+      </ul>
+      <a href="#contact" class="cta">咨询详情</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2>想用 AI 创作能力，为你的业务包装媒体运营形象？</h2>
+  <p>扫码加我，聊聊你的业务场景</p>
+  <div class="qr-placeholder">
+    <div class="qr-box">[ 二维码占位 ]</div>
+    <div class="qr-caption">扫码加我 · 备注「服务」</div>
+  </div>
+  <p style="margin-top:24px; font-size:14px; opacity:0.85;">
+    也可关注公众号「麥客不停」回复「服务」获取联系方式
+  </p>
+</section>
+
+<footer>
+  <strong>版本说明：</strong>本落地页基于 unstoppable-office 新版 Logo 视觉规范制作，遵循<strong> brand/guidelines/visual-identity.html</strong> 的字体（DouyinSans Bold + Inter Black/ExtraBold）、配色（红 #e60012 / 黄 #ffcf00 / 橙 #ff6a00 + 黑 #101010 + 深蓝 #101d33）、字标错位色影规范。
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+isHome: true
+bodyClass: home-page
+title: MAI Unstoppable
+description: 关于一人公司、AI Agent、真实项目与长期创作的现场记录。
+---
+{% set leadArticle = collections.featuredArticles[0] or collections.publishedArticles[0] %}
+<section class="home-hero" aria-labelledby="hero-title">
+  <div class="home-hero__topline">
+    <div class="issue-label">Issue 001 · Human × Agent</div>
+    <time datetime="2026-09">September 2026</time>
+  </div>
+  <div class="home-hero__copy">
+    <h1 id="hero-title"><span>一个人，也可以成为</span><span>一支<em>不停创造</em>的队伍。</span></h1>
+  </div>
+  <div class="home-hero__details">
+    <p class="hero-deck">关于一人公司、AI Agent、真实项目与长期创作的现场记录。这里保留那些不能被短内容压缩掉的部分。</p>
+    {% if leadArticle %}<a class="hero-link" href="{{ leadArticle.url }}">阅读本期主文 <span aria-hidden="true">→</span></a>{% endif %}
+    <p class="hero-format">静态 HTML<br>中英双语 · SEO + GEO</p>
+  </div>
+</section>
+
+<section class="shell principles" aria-labelledby="principles-title">
+  <div class="section-label" id="principles-title">Built for lasting ideas</div>
+  <div class="principles__grid">
+    <p><span class="principle-index">01</span><strong>可以被找到</strong><span>稳定地址与语义化 HTML，让内容离开信息流仍然存在。</span></p>
+    <p><span class="principle-index">02</span><strong>保留完整过程</strong><span>不仅发布结论，也记录选择、失败、验证与修订。</span></p>
+    <p><span class="principle-index">03</span><strong>面向两种读者</strong><span>同时服务中文与英文阅读，也让搜索引擎和 Agent 理解。</span></p>
+  </div>
+</section>
+
+<section class="manifesto" aria-labelledby="manifesto-title">
+  <div class="shell manifesto__inner">
+    <div class="section-label">Why long-form</div>
+    <p class="manifesto__statement" id="manifesto-title"><span aria-hidden="true">→</span> 我们记录的不只是结果，而是想法如何被<span class="tone-blue">提出与拆解</span>，如何被<span class="tone-gold">验证</span>，最后成为一个<span class="tone-blue">可以进入的世界</span>。</p>
+  </div>
+</section>
+
+<section class="shell story-section" id="stories" aria-labelledby="latest-title">
+  <header class="section-heading">
+    <h2 id="latest-title">最近的长篇记录</h2>
+    <div><div class="section-label">Latest stories</div><p>完整上下文 · 清楚的修订时间</p></div>
+  </header>
+  <div class="story-list">
+    {% for article in collections.publishedArticles | limit(3) %}
+    <a class="story-row{% if loop.first %} story-row--featured{% endif %}" href="{{ article.url }}">
+      <span class="story-index">{{ loop.index }}</span>
+      <div class="story-copy"><h3>{{ article.data.title }}</h3><p>{{ article.data.description }}</p></div>
+      <span class="story-meta"><time datetime="{{ article.data.publishedAt | isoDate }}">{{ article.data.publishedAt | displayDate(article.data.lang) }}</time><span>{{ article.data.readingMinutes | readingLabel }}</span></span>
+      <span class="story-arrow" aria-hidden="true">→</span>
+    </a>
+    {% else %}
+    <p class="empty-state">第一篇长文正在整理中。</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="shell series-section" id="series" aria-labelledby="series-title">
+  <header class="section-heading series-heading">
+    <h2 id="series-title">持续进行的项目</h2>
+    <div><div class="section-label">Ongoing series</div><p>从真实项目里长出来的长期记录</p></div>
+  </header>
+  {% set featuredSeries = series[0] %}
+  <a class="series-feature" href="{{ featuredSeries.url }}">
+    <span class="series-feature__art" aria-hidden="true"><span>01</span></span>
+    <span class="series-feature__copy">
+      <span class="section-label">Field series · {{ featuredSeries.status }}</span>
+      <strong>{{ featuredSeries.title }}</strong>
+      <span>{{ featuredSeries.description }}</span>
+      <span class="series-feature__link">查看系列目录 →</span>
+    </span>
+  </a>
+</section>

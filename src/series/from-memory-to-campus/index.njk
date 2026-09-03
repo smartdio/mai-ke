@@ -1,0 +1,14 @@
+---
+layout: layouts/page.njk
+permalink: /series/from-memory-to-campus/index.html
+title: 从记忆到校园
+eyebrow: Field series
+description: 如何把私人记忆变成一座可进入、可验证、也可以继续生长的浏览器空间。
+---
+<div class="archive-list">
+  {% for article in collections.publishedArticles %}
+    {% if article.data.seriesId == "from-memory-to-campus" %}
+    <a class="archive-entry" href="{{ article.url }}"><span class="archive-entry__number">{{ article.data.seriesOrder }}</span><span><strong>{{ article.data.title }}</strong><span>{{ article.data.description }}</span></span><time datetime="{{ article.data.publishedAt | isoDate }}">{{ article.data.publishedAt | displayDate(article.data.lang) }}</time></a>
+    {% endif %}
+  {% endfor %}
+</div>

@@ -1,0 +1,29 @@
+{% set documentTitle = site.nameZh + " / " + site.name if isHome else title + " — " + site.name %}
+{% set documentDescription = description or site.description %}
+{% set canonicalUrl = page.url | absoluteUrl(site.canonicalOrigin) %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ documentTitle }}</title>
+<meta name="description" content="{{ documentDescription }}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{{ canonicalUrl }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }} RSS" href="{{ "/feed.xml" | absoluteUrl(site.origin) }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ documentTitle }}">
+<meta property="og:description" content="{{ documentDescription }}">
+<meta property="og:url" content="{{ canonicalUrl }}">
+{% if contentType == "article" %}<meta property="og:type" content="article">{% else %}<meta property="og:type" content="website">{% endif %}
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fffdf7">
+<link rel="stylesheet" href="/assets/styles/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ site.name | json | safe }},
+  "alternateName": {{ site.nameZh | json | safe }},
+  "url": {{ site.canonicalOrigin | json | safe }},
+  "description": {{ site.description | json | safe }},
+  "inLanguage": {{ (lang or site.lang) | json | safe }}
+}
+</script>

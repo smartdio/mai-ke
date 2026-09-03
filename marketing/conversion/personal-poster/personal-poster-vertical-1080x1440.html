@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>麥客 · 一人公司的 AI 团队主理人</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Inter:wght;800;900@400;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #1a1d1c; }
+
+  .poster {
+    width: 1080px;
+    height: 1440px;
+    background: linear-gradient(180deg, #101010 0%, #101d33 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: "Noto Sans SC", sans-serif;
+    color: #fffaf0;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 80px;
+  }
+
+  /* 装饰光晕 */
+  .poster::before {
+    content: "";
+    position: absolute;
+    top: -300px;
+    right: -300px;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(230, 0, 18, 0.12) 0%, transparent 65%);
+    z-index: 1;
+  }
+  .poster::after {
+    content: "";
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242, 199, 102, 0.06) 0%, transparent 60%);
+    z-index: 1;
+  }
+
+  /* 顶部品牌 */
+  .brand-top {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 50px;
+  }
+  .brand-lockup {
+    width: 340px;
+    height: auto;
+  }
+  .brand-mai {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: #e60012;
+    text-transform: lowercase;
+  }
+  .brand-zh {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #fffaf0;
+  }
+
+  /* 主区域 — 人物 + 信息 */
+  .hero {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  /* 头像/肖像 占位区 */
+  .portrait {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(255, 250, 240, 0.08);
+    border: 4px solid #e60012;
+    margin-bottom: 36px;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 40px rgba(230, 0, 18, 0.25);
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* 占位符样式 */
+  .portrait-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 250, 240, 0.4);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+    background:
+      linear-gradient(45deg, rgba(255, 250, 240, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 250, 240, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 250, 240, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 250, 240, 0.05) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  .portrait-placeholder .icon {
+    font-size: 60px;
+    color: rgba(230, 0, 18, 0.5);
+    margin-bottom: 12px;
+  }
+
+  /* 名字 */
+  .name {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: #fffaf0;
+    margin-bottom: 12px;
+  }
+  /* 角色 */
+  .role {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #e60012;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  /* 一句话价值主张 */
+  .value-prop {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255, 250, 240, 0.85);
+    line-height: 1.6;
+    max-width: 800px;
+  }
+  .value-prop .accent { color: #e60012; font-weight: 700; }
+
+  /* 我能做 */
+  .services {
+    z-index: 2;
+    background: rgba(255, 250, 240, 0.04);
+    border: 1px solid rgba(230, 0, 18, 0.2);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+  }
+  .services-title {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #e60012;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 26px;
+    color: #fffaf0;
+  }
+  .service-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e60012;
+    flex-shrink: 0;
+  }
+
+  /* 联系方式 + QR */
+  .contact {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: auto;
+    background: rgba(255, 250, 240, 0.04);
+    border-radius: 16px;
+    padding: 28px 36px;
+  }
+  .contact-info {
+    flex: 1;
+  }
+  .contact-label {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #e60012;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .contact-cta {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fffaf0;
+    margin-bottom: 6px;
+  }
+  .contact-detail {
+    font-size: 18px;
+    color: rgba(255, 250, 240, 0.6);
+  }
+  .qr-mini {
+    width: 140px;
+    height: 140px;
+    background: #fffaf0;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .qr-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .qr-mini-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.4;
+    background:
+      linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+      linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+  }
+  .qr-mini-placeholder .icon {
+    font-size: 32px;
+    color: #ccc;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- 顶部品牌 -->
+  <div class="brand-top">
+    <img class="brand-lockup" src="../../../../brand/logos/transparent/mai-lockup-bilingual-dark-transparent-cropped.png" alt="麥客不停 MAI UNSTOPPABLE">
+  </div>
+
+  <!-- 主区域 -->
+  <div class="hero">
+
+    <!-- 肖像占位 -->
+    <div class="portrait">
+      <!-- ⬇️ 替换为真实照片 -->
+      <!-- <img src="portrait.jpg" alt="麥客" /> -->
+      <div class="portrait-placeholder">
+        <div class="icon">◉</div>
+        <div>替换为<br>Master 照片</div>
+      </div>
+    </div>
+
+    <!-- 名字 -->
+    <div class="name">麥客</div>
+    <div class="role">creator · opc · ai comic</div>
+
+    <!-- 一句话价值主张 -->
+    <div class="value-prop">
+      一个人 + <span class="accent">一群 AI</span> = 一家完整公司<br>
+      用漫画连载讲 <span class="accent">一人公司</span> 的真实日常
+    </div>
+
+  </div>
+
+  <!-- 服务列表 -->
+  <div class="services">
+    <div class="services-title">what i do · 我能帮你做</div>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-bullet"></div>
+        <div>AI 漫画创作 · 连载运营</div>
+      </div>
+      <div class="service-item">
+        <div class="service-bullet"></div>
+        <div>个人 IP 全平台搭建</div>
+      </div>
+      <div class="service-item">
+        <div class="service-bullet"></div>
+        <div>AI 内容流水线 · 自动化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 联系方式 -->
+  <div class="contact">
+    <div class="contact-info">
+      <div class="contact-label">let's talk · 聊项目</div>
+      <div class="contact-cta">私信「麥客」</div>
+      <div class="contact-detail">备注来意，48h 内回复</div>
+    </div>
+    <div class="qr-mini">
+      <!-- ⬇️ 替换为真实二维码 -->
+      <!-- <img src="qrcode.jpg" alt="QR" /> -->
+      <div class="qr-mini-placeholder">
+        <div class="icon">▣</div>
+        <div>二维码</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

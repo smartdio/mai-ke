@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand-lockup" href="/" aria-label="麥客不停首页">
+      <img src="/assets/brand/mai-avatar-logo-color-circle.png" width="1254" height="1254" alt="" eleventy:ignore>
+      <span class="brand-words" aria-hidden="true">
+        <span class="brand-zh">麥客不停</span>
+        <span class="brand-en">MAI UNSTOPPABLE</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+      {% for item in navigation %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
+      <a class="mobile-nav-link" href="/articles/">目录</a>
+    </nav>
+  </div>
+</header>

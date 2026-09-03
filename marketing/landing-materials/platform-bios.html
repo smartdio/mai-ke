@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麥客不停 — 媒体账号简介统一话术</title>
+<style>
+  @font-face {
+    font-family: "DouyinSans";
+    src: url("../../../brand/fonts/DouyinSansBold.ttf") format("truetype");
+    font-weight: 900; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-Black.otf") format("opentype");
+    font-weight: 950; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "InterLocal";
+    src: url("../../../brand/fonts/Inter-ExtraBold.otf") format("opentype");
+    font-weight: 850; font-style: normal; font-display: swap;
+  }
+  :root {
+    --ink: #101010; --night: #101d33; --paper: #fffaf0;
+    --white: #ffffff; --line: rgba(16,16,16,0.12);
+    --muted: #5c6068; --red: #e60012; --yellow: #ffcf00;
+    --orange: #ff6a00; --cream: #fff8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "InterLocal","DouyinSans","Noto Sans CJK SC","Noto Sans SC",system-ui,sans-serif;
+    background: linear-gradient(180deg,#fff 0%,#fff9ea 38%,#fff 100%);
+    color: var(--ink); line-height: 1.6; overflow-x: hidden;
+  }
+  .doc-header {
+    background: var(--ink); color: var(--white);
+    padding: 48px 20px 40px; text-align: center;
+  }
+  .doc-header .eyebrow {
+    color: var(--yellow); font-size: 13px; font-weight: 950;
+    letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .doc-header h1 {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: clamp(32px,5vw,48px); font-weight: 900;
+    text-shadow: 4px 4px 0 var(--red); margin-bottom: 8px;
+  }
+  .doc-header .subtitle { font-size: 15px; opacity: 0.8; }
+  .container { max-width: 960px; margin: 0 auto; padding: 48px 20px; }
+
+  .brand-spec {
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: 8px; padding: 24px; margin-bottom: 40px;
+  }
+  .brand-spec h2 {
+    font-size: 16px; font-weight: 950; color: var(--red);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .brand-spec ul { list-style: none; }
+  .brand-spec li {
+    padding: 6px 0; font-size: 14px; font-weight: 600; color: #343941;
+  }
+  .brand-spec li strong { color: var(--ink); }
+  .brand-spec .color-row { display: flex; gap: 12px; margin-top: 12px; }
+  .color-chip {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 700;
+  }
+  .color-chip .swatch {
+    width: 20px; height: 20px; border-radius: 4px; border: 1px solid var(--line);
+  }
+
+  .section-label {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+  }
+  .section-label .num {
+    font-family: "InterLocal",sans-serif; font-size: 15px; font-weight: 950;
+    color: var(--red); border-bottom: 3px solid var(--yellow); padding-bottom: 2px;
+  }
+  .section-label h2 {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: 28px; font-weight: 900;
+  }
+
+  .platform-card {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 8px; padding: 24px; margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(16,16,16,0.06);
+  }
+  .platform-card .plat-head {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
+  }
+  .platform-card .plat-num {
+    font-family: "InterLocal",sans-serif; font-size: 14px; font-weight: 950;
+    color: var(--red); letter-spacing: 0.08em;
+  }
+  .platform-card .plat-name {
+    font-family: "DouyinSans","Noto Sans CJK SC",sans-serif;
+    font-size: 22px; font-weight: 900;
+  }
+  .platform-card .plat-en { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .platform-card .bio-box {
+    background: var(--cream); border-left: 4px solid var(--orange);
+    border-radius: 4px; padding: 16px 20px; margin-bottom: 12px;
+  }
+  .platform-card .bio-box p {
+    font-size: 15px; line-height: 1.8; font-weight: 600; color: #262a31;
+    white-space: pre-line;
+  }
+  .platform-card .tag-line {
+    font-size: 13px; color: var(--muted); font-weight: 600;
+  }
+  .platform-card .tag-line strong { color: var(--ink); }
+
+  .principles {
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 16px; margin-bottom: 40px;
+  }
+  .principle {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 8px; padding: 20px;
+  }
+  .principle .p-num {
+    font-family: "InterLocal",sans-serif; font-size: 14px; font-weight: 950;
+    color: var(--red); margin-bottom: 8px;
+  }
+  .principle p { font-size: 14px; font-weight: 600; color: #343941; line-height: 1.6; }
+
+  .pending {
+    background: var(--night); color: var(--white);
+    border-radius: 8px; padding: 24px; margin-bottom: 24px;
+  }
+  .pending h3 { font-size: 18px; font-weight: 900; margin-bottom: 12px; }
+  .pending ul { list-style: none; }
+  .pending li {
+    padding: 8px 0; font-size: 14px; font-weight: 600; opacity: 0.9;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .pending li:last-child { border-bottom: none; }
+
+  footer {
+    border-top: 3px solid var(--ink); padding: 32px 20px;
+    text-align: center; font-size: 13px; color: var(--muted); font-weight: 600;
+  }
+  footer .color-bar {
+    display: flex; justify-content: center; gap: 0; margin-bottom: 16px;
+  }
+  footer .color-bar span { width: 40px; height: 4px; }
+
+  @media (max-width: 640px) {
+    .platform-card .plat-head { flex-direction: column; gap: 4px; }
+    .principles { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <p class="eyebrow">Brand Document · 01</p>
+  <h1>媒体账号简介统一话术</h1>
+  <p class="subtitle">麥客不停 · 品牌账号简介标准 / v5 · 2026-06-25</p>
+</div>
+
+<div class="container">
+
+  <div class="brand-spec">
+    <h2>品牌视觉规范（必须遵循）</h2>
+    <ul>
+      <li><strong>Logo 资产</strong>：brand/logos/avatars/mai-avatar-logo-color.png（彩色圆形头像）</li>
+      <li><strong>锁定组合</strong>：brand/logos/lockups/mai-lockup-bilingual-color.png（主组合优先）</li>
+      <li><strong>字体</strong>：中文 DouyinSans Bold + 英文 Inter Black/ExtraBold</li>
+      <li><strong>视觉规范文档</strong>：brand/guidelines/visual-identity.html</li>
+      <li><strong>使用规则</strong>：周围留白 ≥ 12%，不改色不拉伸字标不拆散速度线</li>
+    </ul>
+    <div class="color-row">
+      <div class="color-chip"><span class="swatch" style="background:#101010"></span> #101010</div>
+      <div class="color-chip"><span class="swatch" style="background:#e60012"></span> #E60012</div>
+      <div class="color-chip"><span class="swatch" style="background:#ffcf00"></span> #FFCF00</div>
+      <div class="color-chip"><span class="swatch" style="background:#ff6a00"></span> #FF6A00</div>
+      <div class="color-chip"><span class="swatch" style="background:#101d33"></span> #101D33</div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <span class="num">CN</span>
+    <h2>国内 6 平台简介</h2>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">01</span>
+      <span class="plat-name">小红书</span>
+      <span class="plat-en">Xiaohongshu / RedNote</span>
+    </div>
+    <div class="bio-box"><p>AI 内容创作者｜MAI = Maker + AI = 无限创作
+一人公司 + AI Agent 团队 = 一个很强的创作团队
+连载《麥客不停》AI 漫画 + Unstoppable Notes 笔记
+用 AI 创作能力，为你包装媒体运营形象
+想聊聊？·私信「服务」</p></div>
+    <p class="tag-line"><strong>置顶笔记话题</strong>：#AI创作 #AI动漫 #MAI #无限创作</p>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">02</span>
+      <span class="plat-name">微博</span>
+      <span class="plat-en">Weibo</span>
+    </div>
+    <div class="bio-box"><p>麥客不停｜AI 内容创作者
+MAI = Maker + AI = 无限创作
+一人公司 + AI Agent 团队
+AI 漫画 / AI 视频 / AI 设计 / 行业经验
+业务咨询：「服务」</p></div>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">03</span>
+      <span class="plat-name">公众号</span>
+      <span class="plat-en">WeChat Official Account</span>
+    </div>
+    <div class="bio-box"><p>麥客不停 — AI 内容创作者
+
+    MAI = Maker + AI = 无限创作。
+
+    我们是谁：
+    一人公司 + AI Agent 团队 = 一个很强的创作团队。
+    AI 动漫、AI 视频、AI 设计、AI 文案 — 全流程都能做。
+
+    我在做的事：
+    《 连载《麥客不停》原创 AI 漫画（每周更新）
+    《 Unstoppable Notes AI 工具实战笔记
+    《 AI 创作能力应用于不同行业
+
+    我的行业经验：法律服务 / 设计 / 教育 / 艺术 / 企业服务 / 个人 IP
+    用 AI 创作能力，为你的业务包装媒体运营形象。
+
+    想为自己的业务做内容？回复「服务」了解合作方式。</p></div>
+        <p class="tag-line"><strong>关注引导语</strong>：扫码关注 / 在看 / 转发</p>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">04</span>
+      <span class="plat-name">B站</span>
+      <span class="plat-en">Bilibili</span>
+    </div>
+    <div class="bio-box"><p>麥客不停｜AI 创作实践记录
+MAI = Maker + AI = 无限创作
+一人公司 + AI Agent 团队
+AI 漫画 + AI 视频拆解 + 创作过程实录
+合作请私信</p></div>
+    <p class="tag-line"><strong>签名档</strong>：每周更新 · AI 创作系列</p>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">05</span>
+      <span class="plat-name">抖音</span>
+      <span class="plat-en">Douyin</span>
+    </div>
+    <div class="bio-box"><p>麥客不停｜AI 内容创作者
+MAI = Maker + AI = 无限创作
+AI 漫画 / 视频 / 设计 · 主页简介</p></div>
+    <p class="tag-line"><strong>个人介绍区</strong>：私信「服务」获取合作方式</p>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">06</span>
+      <span class="plat-name">视频号</span>
+      <span class="plat-en">WeChat Channels</span>
+    </div>
+    <div class="bio-box"><p>麥客不停｜AI 创作者
+MAI = Maker + AI = 无限创作
+一人公司 + AI Agent 团队
+AI 漫画 / 视频 / 笔记 / 设计持续更新
+行业经验：法律 · 设计 · 教育 · 艺术 · 企业服务
+想了解合作 → 私信「服务」</p></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 48px;">
+    <span class="num">EN</span>
+    <h2>海外 5 平台简介</h2>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">07</span>
+      <span class="plat-name">YouTube</span>
+      <span class="plat-en">Channel description</span>
+    </div>
+    <div class="bio-box"><p>MAI = Maker + AI = infinite creation.
+
+I'm Mai — a creator running a one-person studio powered by AI agents.
+I create comics, videos, notes, and designs where AI makes creation infinite.
+
+Mai Unstoppable original AI manga (weekly)
+Unstoppable Notes — AI tools in action
+AI video tutorials
+
+Industry insight: legal · design · education · art · business services
+I use AI creation ability to build media presence for your business.
+
+DM me "service"</p></div>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">08</span>
+      <span class="plat-name">X</span>
+      <span class="plat-en">Twitter / Bio (160 chars)</span>
+    </div>
+    <div class="bio-box"><p>MAI = Maker + AI = infinite creation.
+MAI Unstoppable — content: manga · video · design.
+DM "service"</p></div>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">09</span>
+      <span class="plat-name">Instagram</span>
+      <span class="plat-en">Bio</span>
+    </div>
+    <div class="bio-box"><p>MAI = Maker + AI = infinite creation.
+MAI Unstoppable — content: manga · video · design.
+"Mai Unstoppable" original manga (link in bio)
+DM for collabs</p></div>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">10</span>
+      <span class="plat-name">TikTok</span>
+      <span class="plat-en">Bio</span>
+    </div>
+    <div class="bio-box"><p>MAI = Maker + AI = infinite creation.
+MAI Unstoppable — content: manga · video · design.
+DM "service"</p></div>
+  </div>
+
+  <div class="platform-card">
+    <div class="plat-head">
+      <span class="plat-num">11</span>
+      <span class="plat-name">Facebook</span>
+      <span class="plat-en">About</span>
+    </div>
+    <div class="bio-box"><p>MAI = Maker + AI = infinite creation.
+
+I'm Mai — a creator running a one-person studio powered by AI agents.
+I create comics, videos, notes, and designs where AI makes creation infinite:
+Original AI manga series
+Weekly notes on AI tools
+AI video tutorials
+
+Industry insight: legal · design · education · art · business services
+I use AI creation ability to build media presence for your business.
+Message me for collaboration.</p></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 48px;">
+    <span class="num">PRINCIPLES</span>
+    <h2>简介设计原则</h2>
+  </div>
+  <div class="principles">
+    <div class="principle">
+      <div class="p-num">01</div>
+      <p>三层结构：身份（创作者）→ 能力（人 × AI = 加倍）→ 转化钩子</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">02</div>
+      <p>不超过字数限制：每个平台都遵循平台规则</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">03</div>
+      <p>统一钩子：所有平台都用「私信/回复'服务'」作为转化入口</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">04</div>
+      <p>品牌一致：所有平台都强调「MAI = Maker + AI = 无限创作」</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">05</div>
+      <p>团队叙事：讲「创作团队 + 放大的 AI 创作团队」，不强调人数，不强调规模</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">06</div>
+      <p>AI 动漫聚焦：核心能力锚定 AI 动漫 / AI 内容创作，价值锚定「为客户包装媒体运营形象」</p>
+    </div>
+    <div class="principle">
+      <div class="p-num">07</div>
+      <p>可适配：根据平台特性微调语气和长度</p>
+    </div>
+  </div>
+
+  <div class="pending">
+    <h3>待 Master 决定</h3>
+    <ul>
+      <li>二维码类型：个人微信 / 企业微信 / 公众号关注码</li>
+      <li>海外平台是否需要单独英文落地页</li>
+      <li>国内平台是否需要「加群」入口作为私域前置</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <div class="color-bar">
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--ink)"></span>
+  </div>
+  <p>麥客不停 · 品牌文档 01 · 媒体账号简介统一话术 · v5 · 2026-06-25</p>
+</footer>
+
+</body>
+</html>

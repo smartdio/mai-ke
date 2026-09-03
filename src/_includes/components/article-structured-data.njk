@@ -1,0 +1,27 @@
+{% set author = authors[authorId] %}
+{% set articleUrl = page.url | absoluteUrl(site.canonicalOrigin) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | json | safe }},
+  "description": {{ description | json | safe }},
+  "datePublished": {{ publishedAt | isoDate | json | safe }},
+  "dateModified": {{ updatedAt | isoDate | json | safe }},
+  "inLanguage": {{ lang | json | safe }},
+  "mainEntityOfPage": {{ articleUrl | json | safe }},
+  "author": {
+    "@type": "Person",
+    "name": {{ author.name | json | safe }},
+    "url": {{ author.url | absoluteUrl(site.canonicalOrigin) | json | safe }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.name | json | safe }},
+    "url": {{ site.canonicalOrigin | json | safe }}
+  },
+  "keywords": {{ (tags or []) | json | safe }},
+  "license": {{ license | json | safe }}{% if hero and hero.src %},
+  "image": {{ hero.src | absoluteUrl(articleUrl) | json | safe }}{% endif %}
+}
+</script>
