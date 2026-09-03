@@ -4,6 +4,13 @@
     "title": "从记忆到校园",
     "description": "如何把私人记忆变成一座可进入、可验证、也可以继续生长的浏览器空间。",
     "url": "/series/from-memory-to-campus/",
-    "status": "持续更新"
+    "status": "持续更新",
+    "visual": {
+      "src": "/assets/art/4lite/ingame-main-field.png",
+      "width": 2560,
+      "height": 1440,
+      "alt": "4Lite 游戏中的校园主教学楼与操场",
+      "logoSrc": "/assets/art/4lite/4lite-logo-approved.svg"
+    }
   }
 ]

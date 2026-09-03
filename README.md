@@ -105,8 +105,9 @@ src/articles/<slug>/
 
 1. 将元数据中的 `status` 从 `draft` 改为 `published`。
 2. 运行 `npm test`。
-3. 检查本地预览中的桌面端与移动端阅读效果。
-4. 提交并推送，或使用 Vercel CLI 发布生产版本。
+3. 确认首页“本期主文”和“最近的长篇记录”已同步出现新内容。
+4. 检查本地预览中的桌面端与移动端阅读效果。
+5. 提交并推送，或使用 Vercel CLI 发布生产版本。
 
 草稿不会进入首页文章列表、RSS 或 Sitemap。详细 HTML、图片、视频、音频和双语写法见 [`docs/CONTENT-AUTHORING.md`](./docs/CONTENT-AUTHORING.md)。
 

@@ -7,6 +7,19 @@ description: 围绕同一主题持续推进、可以按顺序阅读的长期记�
 ---
 <div class="directory-grid">
   {% for item in series %}
-  <a class="directory-entry" href="{{ item.url }}"><span class="section-label">{{ item.status }}</span><strong>{{ item.title }}</strong><span>{{ item.description }}</span><span>查看系列 →</span></a>
+  <a class="directory-entry{% if item.visual %} directory-entry--visual{% endif %}" href="{{ item.url }}">
+    <span class="directory-entry__copy">
+      <span class="section-label">{{ item.status }}</span>
+      <strong>{{ item.title }}</strong>
+      <span>{{ item.description }}</span>
+      <span class="directory-entry__link">查看系列 →</span>
+    </span>
+    {% if item.visual %}
+    <span class="directory-entry__visual">
+      <img class="directory-entry__shot" src="{{ item.visual.src }}" width="{{ item.visual.width }}" height="{{ item.visual.height }}" alt="{{ item.visual.alt }}" loading="eager" decoding="async">
+      <span class="directory-entry__logo" aria-hidden="true"><img src="{{ item.visual.logoSrc }}" alt="" width="1774" height="887"></span>
+    </span>
+    {% endif %}
+  </a>
   {% endfor %}
 </div>
