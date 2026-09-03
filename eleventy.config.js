@@ -2,6 +2,7 @@ import rssPlugin from "@11ty/eleventy-plugin-rss";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 const buildNow = new Date();
+const publishingTimeZone = "Asia/Shanghai";
 
 function isPublished(item) {
   const status = item.data.status;
@@ -63,7 +64,8 @@ export default function (eleventyConfig) {
     return new Intl.DateTimeFormat(locale, {
       year: "numeric",
       month: "2-digit",
-      day: "2-digit"
+      day: "2-digit",
+      timeZone: publishingTimeZone
     }).format(date).replaceAll("/", ".");
   });
   eleventyConfig.addFilter("isoDate", value => new Date(value).toISOString());

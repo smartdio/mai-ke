@@ -627,6 +627,7 @@ Eleventy 建立以下集合：
 ## 18. 集中配置
 
 - `_data/site.js`：品牌、域名、默认 SEO、地区和构建信息。
+- 所有公开日期按 `Asia/Shanghai` 出版时区格式化，避免海外构建节点把日期显示成前一天。
 - `_data/navigation.json`：共享页眉导航。
 - `_data/socialLinks.json`：账号、项目链接和 `enabled` 状态；YouTube 第一阶段设为 false。
 - `_data/authors.json`：作者页、署名和 Person JSON-LD。

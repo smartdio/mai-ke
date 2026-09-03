@@ -12,6 +12,7 @@ export default {
   description: "关于一人公司、AI Agent、真实项目与长期创作的现场记录。",
   lang: "zh-CN",
   locale: "zh-CN",
+  timeZone: "Asia/Shanghai",
   origin: siteOrigin,
   canonicalOrigin,
   mirrorOrigin: process.env.MIRROR_ORIGIN || "",
