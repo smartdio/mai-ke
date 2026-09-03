@@ -173,9 +173,9 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 }
 .issue-label, .section-label, .article-kicker { color: var(--blue); }
 .home-hero__copy {
-  align-self: end;
+  align-self: center;
   width: min(39rem, 100%);
-  margin-bottom: 3.75rem;
+  margin-top: 1.25rem;
 }
 .home-hero h1 {
   margin: 0;
@@ -188,9 +188,20 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 }
 .home-hero h1 > span { display: block; }
 .home-hero h1 em { color: var(--blue); font-style: normal; }
+.home-hero__copy .hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--blue-deep);
+  color: var(--white);
+  text-decoration: none;
+}
+.home-hero__copy .hero-link:hover { background: var(--blue); color: var(--white); }
 .home-hero__details {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(8rem, 0.75fr) minmax(10rem, 0.7fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(10rem, 0.7fr);
   gap: 2rem;
   align-items: end;
   padding-top: 1.5rem;
@@ -565,7 +576,7 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
     background-position: 52% center;
   }
   .home-hero__topline { gap: 1rem; }
-  .home-hero__copy { margin-bottom: 2.5rem; }
+  .home-hero__copy { margin-top: 1rem; }
   .home-hero__details { grid-template-columns: 1fr; gap: 1rem; }
   .hero-format { text-align: left; }
   .principles { padding: 5rem 0 6rem; }

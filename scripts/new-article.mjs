@@ -60,3 +60,4 @@ fs.writeFileSync(path.join(root, "index.html"), body);
 fs.writeFileSync(path.join(root, "index.11tydata.json"), `${JSON.stringify(metadata, null, 2)}\n`);
 console.log(`已创建：${root}`);
 console.log(`本地预览：/preview/${slug}/`);
+console.log(`完成内容后发布：npm run article:publish -- --slug ${slug}`);

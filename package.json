@@ -11,6 +11,7 @@
     "clean": "node scripts/clean-output.mjs",
     "build": "npm run clean && NODE_ENV=production eleventy",
     "article:new": "node scripts/new-article.mjs",
+    "article:publish": "node scripts/publish-article.mjs",
     "check:content": "node scripts/validate-content.mjs",
     "check:html": "html-validate \"_site/**/*.html\"",
     "check:output": "node scripts/validate-output.mjs",

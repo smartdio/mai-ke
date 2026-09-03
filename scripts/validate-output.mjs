@@ -57,6 +57,39 @@ const feed = fs.existsSync(path.join(root, "feed.xml")) ? fs.readFileSync(path.j
 if (/\/preview\//.test(sitemap) || /\/preview\//.test(feed)) errors.push("草稿预览进入了 Sitemap 或 RSS");
 if (!/OAI-SearchBot/.test(fs.readFileSync(path.join(root, "robots.txt"), "utf8"))) errors.push("robots.txt 缺少 OAI-SearchBot 规则");
 const homepage = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const sourceArticlesRoot = path.resolve(import.meta.dirname, "..", "src", "articles");
+const publicArticles = walk(sourceArticlesRoot)
+  .filter(file => file.endsWith("index.11tydata.json"))
+  .map(file => JSON.parse(fs.readFileSync(file, "utf8")))
+  .filter(article => {
+    const publishedAt = new Date(article.publishedAt);
+    return (article.status === "published" || article.status === "archived" || article.status === "scheduled")
+      && !Number.isNaN(publishedAt.valueOf())
+      && publishedAt <= new Date();
+  })
+  .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+if (publicArticles.length) {
+  const expectedLeadUrl = `/articles/${publicArticles[0].slug}/`;
+  const heroMatch = homepage.match(/<a class="hero-link" href="([^"]+)">/);
+  if (heroMatch?.[1] !== expectedLeadUrl) {
+    errors.push(`首页主文应指向最新文章 ${expectedLeadUrl}，实际为 ${heroMatch?.[1] || "未找到"}`);
+  }
+  if (!homepage.includes(`<h1 id="hero-title">${publicArticles[0].title}</h1>`)) {
+    errors.push(`首页 Hero 标题没有同步最新文章：${publicArticles[0].title}`);
+  }
+  if (!homepage.includes(publicArticles[0].description)) {
+    errors.push(`首页 Hero 摘要没有同步最新文章：${expectedLeadUrl}`);
+  }
+
+  const latestSection = homepage.match(/<div class="story-list">([\s\S]*?)<\/div>\s*<\/section>/)?.[1] || "";
+  for (const article of publicArticles.slice(0, 3)) {
+    const articleUrl = `/articles/${article.slug}/`;
+    if (!latestSection.includes(`href="${articleUrl}"`)) {
+      errors.push(`首页“最近的长篇记录”缺少 ${articleUrl}`);
+    }
+  }
+}
 for (const label of ["X · @smardio", "TikTok · @smardio", "小红书 · 麥客不停", "微博 · 麥客不停", "视频号 · Mo麥AI"]) {
   if (!homepage.includes(label)) errors.push(`首页页脚缺少账号：${label}`);
 }

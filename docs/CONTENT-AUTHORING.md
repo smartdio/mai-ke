@@ -48,13 +48,13 @@ npm run article:new -- --slug rebuilding-a-school-from-memory --lang zh-CN
   → 编辑 index.html
   → 把媒体放进 media/
   → 本地预览与单篇检查
-  → 将 status 改为 published
+  → 运行 article:publish
   → 提交代码
   → 海外站自动构建发布
   → 国内镜像启用后由同一提交生成第二套产物
 ```
 
-首页、列表、系列页、项目页、RSS 和 Sitemap 从文章集合自动更新。每次内容发布后，首页的“本期主文”自动切换到最新文章，“最近的长篇记录”同步重排；发布检查必须确认这两个入口均已更新。
+首页 Hero、列表、系列页、项目页、RSS 和 Sitemap 从文章集合自动更新。每次内容发布统一运行 `npm run article:publish -- --slug article-slug`；脚本写入发布状态与时间，重新生成站点，并强制确认首页 Hero 的栏目、日期、标题、摘要和链接均来自新文章，“最近的长篇记录”也已经出现新文章。任何一步失败，脚本都会恢复发布前的元数据。
 
 ## 4. 文章元数据
 
@@ -260,6 +260,6 @@ YouTube、Bilibili 等第三方视频默认采用“本地封面 + 标题 + 打�
 2. 在 `index.html` 写正文。
 3. 把图片放入 `media/` 并在 HTML 中引用。
 4. 填写元数据与图片说明。
-5. 本地检查后把 `status` 改为 `published`。
+5. 本地检查后运行 `npm run article:publish -- --slug article-slug`。
 
-不需要手工制作文章列表卡片或逐处修改首页，但每次发布都必须确认首页已自动换上最新主文并出现新文章；也不需要复制页眉、页脚或单独维护 SEO 文件。
+不要手工把 `status` 改为 `published`，也不需要制作文章列表卡片或逐处修改首页。发布脚本会自动更新并验证首页、列表、RSS 和 Sitemap；页眉、页脚与 SEO 文件仍由共享模板生成。

@@ -9,16 +9,20 @@ description: 关于一人公司、AI Agent、真实项目与长期创作的现�
 {% set leadArticle = collections.publishedArticles[0] %}
 <section class="home-hero" aria-labelledby="hero-title">
   <div class="home-hero__topline">
-    <div class="issue-label">Issue 001 · Human × Agent</div>
-    <time datetime="2026-09">September 2026</time>
+    <div class="issue-label">{% if leadArticle %}{{ leadArticle.data.kicker or "Latest story" }}{% else %}MAI Unstoppable{% endif %}</div>
+    {% if leadArticle %}<time datetime="{{ leadArticle.data.publishedAt | isoDate }}">{{ leadArticle.data.publishedAt | displayDate(leadArticle.data.lang) }}</time>{% endif %}
   </div>
   <div class="home-hero__copy">
-    <h1 id="hero-title"><span>一个人，也可以成为</span><span>一支<em>不停创造</em>的队伍。</span></h1>
+    {% if leadArticle %}
+    <h1 id="hero-title">{{ leadArticle.data.title }}</h1>
+    <a class="hero-link" href="{{ leadArticle.url }}">阅读全文 <span aria-hidden="true">→</span></a>
+    {% else %}
+    <h1 id="hero-title">麥客不停，创作不止。</h1>
+    {% endif %}
   </div>
   <div class="home-hero__details">
-    <p class="hero-deck">关于一人公司、AI Agent、真实项目与长期创作的现场记录。这里保留那些不能被短内容压缩掉的部分。</p>
-    {% if leadArticle %}<a class="hero-link" href="{{ leadArticle.url }}">阅读本期主文 <span aria-hidden="true">→</span></a>{% endif %}
-    <p class="hero-format">静态 HTML<br>中英双语 · SEO + GEO</p>
+    <p class="hero-deck">{% if leadArticle %}{{ leadArticle.data.description }}{% else %}关于一人公司、AI Agent、真实项目与长期创作的现场记录。{% endif %}</p>
+    {% if leadArticle %}<p class="hero-format">{{ leadArticle.data.readingMinutes | readingLabel }}<br>{{ leadArticle.data.lang }}</p>{% endif %}
   </div>
 </section>
 

@@ -517,6 +517,7 @@ _site-cn/
     "dev": "eleventy --serve",
     "build": "eleventy",
     "article:new": "node scripts/new-article.mjs",
+    "article:publish": "node scripts/publish-article.mjs",
     "check:article": "node scripts/check-article.mjs",
     "media:check": "node scripts/check-media.mjs",
     "check:content": "node scripts/validate-content.mjs",
@@ -620,6 +621,8 @@ Eleventy 建立以下集合：
 - `translations`：按 `translationKey` 关联真实存在的语言版本。
 
 站点页面只消费这些集合，不复制文章摘要或卡片数据。草稿在生产构建阶段彻底排除，而不是通过 CSS 隐藏。
+
+新文章统一由 `article:new` 创建、由 `article:publish` 发布。发布脚本更新文章元数据后执行完整构建，并验证首页 Hero 的标题、摘要和链接均来自最新文章，最近文章列表也包含新文章；失败时恢复原元数据。`check:output` 会重复执行这项首页一致性检查，防止绕过发布脚本后留下静默错误。
 
 ## 18. 集中配置
 

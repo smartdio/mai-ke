@@ -69,6 +69,7 @@ npm run dev
 | --- | --- |
 | `npm run dev` | 启动本地开发服务器 |
 | `npm run article:new -- --slug article-slug --lang zh-CN --title "文章标题"` | 创建一篇草稿文章 |
+| `npm run article:publish -- --slug article-slug` | 发布文章并自动更新、验证首页与所有内容入口 |
 | `npm run check:content` | 检查文章元数据和媒体引用 |
 | `npm run build` | 生成生产静态文件 |
 | `npm run check:html` | 检查生成后的 HTML |
@@ -103,11 +104,12 @@ src/articles/<slug>/
 
 完成正文后：
 
-1. 将元数据中的 `status` 从 `draft` 改为 `published`。
-2. 运行 `npm test`。
-3. 确认首页“本期主文”和“最近的长篇记录”已同步出现新内容。
-4. 检查本地预览中的桌面端与移动端阅读效果。
-5. 提交并推送，或使用 Vercel CLI 发布生产版本。
+1. 检查本地预览中的桌面端与移动端阅读效果。
+2. 运行 `npm run article:publish -- --slug article-slug`。
+3. 脚本写入正式发布时间，重新生成站点，并验证首页“本期主文”和“最近的长篇记录”均已同步。
+4. 提交并推送，或使用 Vercel CLI 发布生产版本。
+
+不要手工把 `status` 改成 `published`。统一通过发布脚本完成，检查失败时脚本会恢复原来的草稿元数据。
 
 草稿不会进入首页文章列表、RSS 或 Sitemap。详细 HTML、图片、视频、音频和双语写法见 [`docs/CONTENT-AUTHORING.md`](./docs/CONTENT-AUTHORING.md)。
 
