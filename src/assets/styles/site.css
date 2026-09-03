@@ -210,33 +210,7 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 .hero-deck { margin: 0; color: var(--soft-ink); font-size: var(--type-body); line-height: 1.65; }
 .hero-link { width: fit-content; color: var(--blue-deep); font-family: var(--sans); font-size: var(--type-small); font-weight: 700; }
 .hero-format { margin: 0; color: var(--soft-ink); font-family: var(--sans); font-size: var(--type-small); line-height: 1.65; text-align: right; }
-.principles {
-  padding: 6rem 2rem 7rem;
-  background: color-mix(in srgb, var(--sky-light) 34%, var(--paper));
-}
-.principles > .section-label { text-align: center; }
-.principles__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 3.5rem; }
-.principles__grid p { display: grid; gap: 0.75rem; margin: 0; padding: 1.5rem 2.75rem; color: var(--soft-ink); font-size: var(--type-body); line-height: 1.7; }
-.principles__grid p + p { border-left: 1px solid var(--line); }
-.principles__grid strong { color: var(--ink); font-family: var(--serif); font-size: var(--type-body); font-weight: 600; }
-.principle-index { color: var(--blue); font-family: var(--sans); font-size: var(--type-small); letter-spacing: 0.08em; }
-.manifesto {
-  width: min(82.5rem, calc(100% - 4.5rem));
-  min-height: 29rem;
-  margin-inline: auto;
-  background-color: var(--sky-light);
-  background-image:
-    linear-gradient(0deg, rgba(255, 253, 247, 0.14), rgba(255, 253, 247, 0.5)),
-    url("/assets/art/mai-watercolor-hero-v1.webp");
-  background-position: 58% 58%;
-  background-size: cover;
-}
-.manifesto__inner { min-height: 29rem; display: grid; grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1.45fr); gap: 7.5%; align-items: center; }
-.manifesto__statement { max-width: 50rem; margin: 0; color: color-mix(in srgb, var(--ink) 50%, transparent); font-family: var(--serif); font-size: var(--type-heading); font-weight: 500; line-height: 1.32; letter-spacing: -0.02em; }
-.manifesto__statement > span:first-child { color: var(--ink); }
-.manifesto__statement .tone-blue { color: var(--blue); }
-.manifesto__statement .tone-gold { color: #b48a15; }
-.story-section { padding: 7.5rem 0 9.5rem; }
+.story-section { padding: 5.5rem 0 8rem; }
 .section-heading { display: flex; justify-content: space-between; align-items: start; gap: 3rem; margin-bottom: 4rem; }
 .section-heading h2 { max-width: 34rem; margin: 0; font-family: var(--serif); font-size: var(--type-heading); line-height: 1.13; font-weight: 500; letter-spacing: -0.025em; }
 .section-heading > div { max-width: 18rem; text-align: right; }
@@ -553,14 +527,12 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 .media-embed button { padding: 0.75rem 1rem; border: 1px solid var(--blue-deep); background: var(--paper); color: var(--blue-deep); font: 700 var(--type-small)/1 var(--sans); cursor: pointer; }
 
 @media (max-width: 1020px) {
-  .principles__grid p { padding-inline: 1.75rem; }
-  .manifesto__inner { grid-template-columns: minmax(8rem, 0.4fr) minmax(0, 1.6fr); }
   .series-feature__copy { padding: 3rem; }
   .site-footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 @media (max-width: 720px) {
-  .shell, .home-hero, .manifesto, .article-hero, .article-layout, .article-heading { width: min(100% - 2.5rem, 82.5rem); }
+  .shell, .home-hero, .article-hero, .article-layout, .article-heading { width: min(100% - 2.5rem, 82.5rem); }
   .site-nav a { display: none; }
   .site-nav .mobile-nav-link { display: block; }
   .site-header__inner { min-height: 74px; }
@@ -579,13 +551,7 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
   .home-hero__copy { margin-top: 1rem; }
   .home-hero__details { grid-template-columns: 1fr; gap: 1rem; }
   .hero-format { text-align: left; }
-  .principles { padding: 5rem 0 6rem; }
-  .principles__grid { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 3rem; }
-  .principles__grid p { padding: 0; }
-  .principles__grid p + p { border-left: 0; }
-  .manifesto, .manifesto__inner { min-height: 32rem; }
-  .manifesto__inner { grid-template-columns: 1fr; gap: 2.5rem; align-content: center; padding-block: 3rem; }
-  .story-section { padding: 6rem 0 7rem; }
+  .story-section { padding: 4.5rem 0 6.5rem; }
   .section-heading { display: grid; gap: 1.5rem; margin-bottom: 3rem; }
   .section-heading > div { text-align: left; }
   .story-row { grid-template-columns: 2.25rem minmax(0, 1fr) 1.5rem; gap: 0.75rem; padding: 1.5rem 0; }
