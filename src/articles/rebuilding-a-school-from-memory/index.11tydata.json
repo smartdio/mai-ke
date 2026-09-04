@@ -1,0 +1,32 @@
+{
+  "title": "一座从记忆里长出来的校园",
+  "description": "所有代码由 AI 开发，所有正式美术素材由 Agent 制作：一个人与一组 Agent 怎样从两张照片和一份草图出发，还原一座八十年代的校园。",
+  "slug": "rebuilding-a-school-from-memory",
+  "lang": "zh-CN",
+  "translationKey": "rebuilding-a-school-from-memory",
+  "publishedAt": "2026-09-04T19:23:30.592Z",
+  "updatedAt": "2026-09-04T19:23:30.592Z",
+  "authorId": "mai",
+  "status": "published",
+  "featured": false,
+  "readingMinutes": 10,
+  "kicker": "4Lite 开发故事 · 00",
+  "seriesId": "from-memory-to-campus",
+  "seriesOrder": 0,
+  "projectIds": [
+    "4lite"
+  ],
+  "tags": [
+    "AI Native",
+    "AI Agent",
+    "4Lite",
+    "游戏开发",
+    "人机协作"
+  ],
+  "hero": {
+    "src": "./media/game-courtyard.png",
+    "alt": "4Lite 游戏中的一号教学楼中央门洞，后方可见校园操场",
+    "caption": "这不是大模型自由生成的校园，而是从三份资料和零散记忆中反复校正出来的空间。"
+  },
+  "license": "CC BY 4.0"
+}
