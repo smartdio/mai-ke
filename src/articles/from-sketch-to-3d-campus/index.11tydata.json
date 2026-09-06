@@ -1,0 +1,35 @@
+{
+  "title": "一座记忆里的校园，怎样从草图变成 3D",
+  "description": "从记忆草图到可以进入的三维校园：ChatGPT 怎样组合 SVG 图纸、Three.js、混元 3D 与 Blender，持续校正而不是一次生成。",
+  "slug": "from-sketch-to-3d-campus",
+  "lang": "zh-CN",
+  "translationKey": "from-sketch-to-3d-campus",
+  "publishedAt": "2026-09-06T08:07:06.580Z",
+  "updatedAt": "2026-09-06T08:07:06.580Z",
+  "authorId": "mai",
+  "status": "published",
+  "featured": false,
+  "readingMinutes": 9,
+  "kicker": "4Lite 开发故事 · 01",
+  "seriesId": "from-memory-to-campus",
+  "seriesOrder": 1,
+  "projectIds": [
+    "4lite"
+  ],
+  "tags": [
+    "AI Native",
+    "AI Agent",
+    "ChatGPT",
+    "3D 建模",
+    "4Lite",
+    "人机协作"
+  ],
+  "hero": {
+    "src": "./media/programmatic-campus-courtyard.png",
+    "width": 1280,
+    "height": 720,
+    "alt": "程序化构建完成后，玩家从一号教学楼中央门洞看向操场和大榕树",
+    "caption": "从草图与 SVG 图纸出发，校园被做成可以走进去检查和继续修改的空间。"
+  },
+  "license": "CC BY 4.0"
+}
